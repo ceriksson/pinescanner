@@ -1,6 +1,10 @@
-# pinescanner
+# 🌲 scanner
 
 A new flutter plugin project.
+
+## QR scanner plugin (Swift/Kotlin)
+
+For use in different flutter apps.
 
 ## Getting Started
 
