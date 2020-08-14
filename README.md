@@ -1,4 +1,4 @@
-# pinescanner
+# 🌲 scanner
 
 A new flutter plugin project.
 
