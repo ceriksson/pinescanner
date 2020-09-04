@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 import 'package:pinescanner/pinescanner.dart';
 
@@ -46,10 +47,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: const Text('Plugin example app'),
+          title: Text('Running on:'),
         ),
         body: Center(
-          // child: Text('Running on: $_platformVersion\n'),
           child: Pinescanner(
             key: mainQrKey,
             onQRViewCreated: (controller) async {

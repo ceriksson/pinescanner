@@ -80,7 +80,8 @@ class _PinescannerState extends State<Pinescanner> {
         break;
       default:
         throw UnsupportedError(
-            "Trying to use the default webview implementation for $defaultTargetPlatform but there isn't a default one");
+          "Trying to use the default webview implementation for $defaultTargetPlatform but there isn't a default one",
+        );
     }
     return _platformQrView;
   }
@@ -124,7 +125,7 @@ class QRViewController {
   Stream<String> get scannedDataStream => _scanUpdateController.stream;
 
   QRViewController._(int id, GlobalKey qrKey)
-      : _channel = MethodChannel('pinescanner_$id') {
+      : _channel = MethodChannel('pinescanner') {
     if (defaultTargetPlatform == TargetPlatform.iOS) {
       final RenderBox renderBox = qrKey.currentContext.findRenderObject();
       _channel.invokeMethod("setDimensions",

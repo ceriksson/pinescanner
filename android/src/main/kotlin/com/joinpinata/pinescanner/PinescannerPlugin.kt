@@ -25,7 +25,7 @@ public class PinescannerPlugin: FlutterPlugin, MethodCallHandler, ActivityAware 
 
     flBinding = flutterPluginBinding
 
-    channel = MethodChannel(flutterPluginBinding.getFlutterEngine().getDartExecutor(), "pinescanner")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "com.joinpinata.pinescanner")
     channel.setMethodCallHandler(this);
   }
 

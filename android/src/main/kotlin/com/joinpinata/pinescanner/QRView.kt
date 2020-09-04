@@ -10,7 +10,8 @@ import android.os.Build
 import android.os.Bundle
 import android.view.View
 import com.google.zxing.ResultPoint
-import android.hardware.Camera.CameraInfo
+import android.hardware.camera2.CameraCharacteristics
+import androidx.annotation.RequiresApi
 import com.journeyapps.barcodescanner.BarcodeCallback
 import com.journeyapps.barcodescanner.BarcodeResult
 import com.journeyapps.barcodescanner.BarcodeView
@@ -67,14 +68,15 @@ class QRView(private val context: Context, private val activity: Activity, messe
         })
     }
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     private fun flipCamera() {
         barcodeView?.pause()
         val settings = barcodeView?.cameraSettings
 
-        if(settings?.requestedCameraId == CameraInfo.CAMERA_FACING_FRONT)
-            settings.requestedCameraId = CameraInfo.CAMERA_FACING_BACK
+        if(settings?.requestedCameraId == CameraCharacteristics.LENS_FACING_FRONT)
+            settings.requestedCameraId = CameraCharacteristics.LENS_FACING_BACK
         else
-            settings?.requestedCameraId = CameraInfo.CAMERA_FACING_FRONT
+            settings?.requestedCameraId = CameraCharacteristics.LENS_FACING_FRONT
 
         barcodeView?.cameraSettings = settings
         barcodeView?.resume()
@@ -153,6 +155,7 @@ class QRView(private val context: Context, private val activity: Activity, messe
     }
 
 
+    @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onMethodCall(call: MethodCall, result: MethodChannel.Result) {
         when(call.method){
             "checkAndRequestPermission" -> {
