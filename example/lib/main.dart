@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+// import 'package:flutter/services.dart';
 
 import 'package:pinescanner/pinescanner.dart';
 
@@ -44,6 +44,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     final GlobalKey mainQrKey = GlobalKey();
+    print("building scanner view");
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -56,7 +57,7 @@ class _MyAppState extends State<MyApp> {
               print("scanning");
               final code = await controller.scannedDataStream.first;
               print("🦁 got code: $code");
-              controller.pauseCamera();
+              // controller.pauseCamera();
             },
           ),
         ),

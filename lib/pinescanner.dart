@@ -125,7 +125,11 @@ class QRViewController {
   Stream<String> get scannedDataStream => _scanUpdateController.stream;
 
   QRViewController._(int id, GlobalKey qrKey)
-      : _channel = MethodChannel('pinescanner') {
+      : _channel = MethodChannel(
+          defaultTargetPlatform == TargetPlatform.iOS
+              ? 'pinescanner_$id'
+              : 'pinescanner',
+        ) {
     if (defaultTargetPlatform == TargetPlatform.iOS) {
       final RenderBox renderBox = qrKey.currentContext.findRenderObject();
       _channel.invokeMethod("setDimensions",
