@@ -1,4 +1,4 @@
-# 🌲 scanner
+# 🌲 Flutter QR Scanner
 
 A new flutter plugin project.
 
